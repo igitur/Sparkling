@@ -11,7 +11,13 @@
 <div class="post-inner-content">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header page-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<h1 class="entry-title"><?php 
+		  // Add glyphicon from custom tag
+		  $glyph = get_post_custom_values('glyphicon');
+		  if ( !empty($glyph) ) :
+		  	echo '<span class="glyphicon ' . esc_attr( $glyph[0] ) . '"></span>&nbsp;';
+		  endif;
+		?><?php the_title(); ?></h1>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
